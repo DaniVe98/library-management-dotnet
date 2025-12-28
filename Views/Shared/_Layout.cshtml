@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>Library Management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="~/css/site.css" rel="stylesheet" />
+    
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <nav class="bg-blue-600 text-white p-4 mb-6">
+        <div class="container mx-auto flex justify-between">
+            <span class="font-bold">Library Management</span>
+            <a href="/" class="hover:underline">Inicio</a>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4">
+        @RenderBody()
+    </main>
+
+@RenderSection("Scripts", required: false)
+</body>
+</html>
+

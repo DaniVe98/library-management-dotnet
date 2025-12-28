@@ -1,0 +1,21 @@
+@model LibraryManagement.Models.Author
+
+<h2 class="text-xl font-bold mb-4">Agregar Autor</h2>
+
+<form asp-action="Create" method="post" class="bg-white p-6 rounded shadow-md space-y-4">
+    <div>
+        <label class="block mb-1 font-medium">Nombre del Autor</label>
+        <input asp-for="Name"
+               class="w-full border border-gray-300 p-2 rounded" />
+        <span asp-validation-for="Name" class="text-red-500 text-sm"></span>
+    </div>
+
+    <button type="submit"
+            class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
+        Guardar 
+    </button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

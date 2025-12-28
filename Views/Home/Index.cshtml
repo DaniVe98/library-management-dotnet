@@ -1,0 +1,33 @@
+﻿@model IEnumerable<LibraryManagement.Models.Book>
+
+<h1 class="text-2xl font-bold mb-6">Listado de Libros</h1>
+
+<div class="mb-4 flex gap-2">
+    <a asp-controller="Books" asp-action="Create"
+       class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+        Agregar Libro
+    </a>
+
+    <a asp-controller="Authors" asp-action="Create"
+       class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
+        Agregar Autor
+    </a>
+</div>
+
+<table class="w-full border border-gray-300 bg-white shadow-sm">
+    <thead class="bg-gray-200">
+        <tr>
+            <th class="border px-4 py-2 text-left">Título</th>
+            <th class="border px-4 py-2 text-left">Autor</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr class="hover:bg-gray-50">
+                <td class="border px-4 py-2">@book.Title</td>
+                <td class="border px-4 py-2">@book.Author.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
