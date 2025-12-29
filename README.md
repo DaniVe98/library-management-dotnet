@@ -25,117 +25,123 @@ Este proyecto fue desarrollado como parte de una prueba técnica para la posici�
 - 📖 Listado de libros registrados
 - ✍️ Registro de nuevos autores
 - ➕ Registro de nuevos libros asociados a un autor
-- ✅ Validaciones básicas en formularios frontend y backend
+- ✅ Validaciones básicas en formularios (Frontend y Backend)
+    * La validación del formulario del lado del cliente se maneja a través de la vista compartida _ValidationScriptsPartial.
+
 - 🔗 Relación Autor – Libros (uno a muchos)
 
 ---
 
 ## 🗂️ Estructura del Proyecto
 
-LibraryManagement
-│
-├── Controllers
-│ ├── HomeController.cs
-│ ├── BooksController.cs
-│ └── AuthorsController.cs
-│
-├── Models
-│ ├── Book.cs
-│ └── Author.cs
-│
-├── Data
-│ └── LibraryContext.cs
-│
-├── Views
-│ ├── Home
-│ ├── Books
-│ └── Authors
-│
-├── wwwroot
-│ └── css
-│
-└── README.md
+LibraryManagement  
+│  
+├── Controllers  
+│ ├── HomeController.cs  
+│ ├── BooksController.cs  
+│ └── AuthorsController.cs  
+│  
+├── Models  
+│ ├── Book.cs  
+│ └── Author.cs  
+│  
+├── Data  
+│ └── LibraryContext.cs  
+│  
+├── Views  
+│ ├── Home  
+│ ├── Books  
+│ └── Authors  
+│  
+├── wwwroot  
+│ └── css  
+│  
+└── README.md  
 
 
 ---
 
 ## 🛠️ Configuración y Ejecución del Proyecto
 
-### 1️. Requisitos Previos
+### 1. Requisitos Previos
 - .NET SDK 8
-- SQL Server
-- Visual Studio / Visual Studio Code
+- SQL Server (Express o superior)
+- SQL Server Management Studio (SSMS)
+- Visual Studio o Visual Studio Code
 
-### 2️. Clonar el repositorio
+### 2. Clonar el repositorio
 ```bash
-git clone <url-del-repositorio>
+git clone https://github.com/DaniVe98/library-management-dotnet.git
+cd library-management-dotnet
+```
 
 ### 3. Configurar la base de datos
-Actualizar la cadena de conexión en `appsettings.json`:
-Server=.\SQLEXPRESS;
-Database=LibraryManagementDb;
-Trusted_Connection=True;
+Actualizar la cadena de conexión en el archivo appsettings.json:
+```bash
+"ConnectionStrings": {
+    "DefaultConnection": "Server=.\\SQLEXPRESS;Database=LibraryManagementDb;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=False;TrustServerCertificate=True"
+  }
+```
 
 
 ### 4. Crear la base de datos
-Ejecutar el script SQL incluido en el repositorio.
+El proyecto utiliza SQL Server y Entity Framework Core para la persistencia de datos.
+Existen dos formas de crear la base de datos:
+
+**Opción A – Usando el script SQL**  
+1. Abrir SQL Server Management Studio (SSMS).
+2. Conectarse a la instancia de SQL Server.
+3. Ejecutar el archivo database.sql incluido en el repositorio.
+4. Verificar que las tablas Authors y Books se hayan creado correctamente.
+
+**Opción B – Usando Entity Framework (opcional)**  
+Si se desea utilizar Entity Framework para crear la base de datos:
+
+```bash
+dotnet ef database update
+```
 
 ### 5. Ejecutar la aplicación
+```bash
 dotnet run
+```
 
 Acceder desde el navegador a:
-
+```bash
 https://localhost:xxxx
+```
 
-Base de Datos:
+---
 
- - Script SQL:
 
-CREATE TABLE Authors (
-    AuthorID INT IDENTITY(1,1) PRIMARY KEY,
-    Name NVARCHAR(100) NOT NULL
-);
 
-CREATE TABLE Books (
-    ID INT IDENTITY(1,1) PRIMARY KEY,
-    Title NVARCHAR(150) NOT NULL,
-    AuthorID INT NOT NULL,
-    CONSTRAINT FK_Books_Authors
-        FOREIGN KEY (AuthorID) REFERENCES Authors(AuthorID)
-);
+## 🖼️ Capturas de Pantalla  
 
-Diagrama Entidad-Relación (ER):
-┌───────────────┐        1        ┌───────────────┐
-│    Authors    │─────────────────│     Books     │
-├───────────────┤        N        ├───────────────┤
-│ AuthorID (PK) │                 │ ID (PK)       │
-│ Name          │                 │ Title         │
-│               │                 │ AuthorID (FK) │
-└───────────────┘                 └───────────────┘
+**📍 Página Principal – Listado de Libros**  
+Se muestra la lista de libros registrados junto con su autor:  
+<img width="1366" height="636" alt="image" src="https://github.com/user-attachments/assets/70bc0f46-590f-4146-bc75-09eaf3576c0e" />
+
+Accesos directos para agregar libros y autores:  
+<img width="349" height="71" alt="image" src="https://github.com/user-attachments/assets/55505b47-0261-4337-b3bb-2915f8efe3a3" />
+
+**📍 Formulario – Agregar Autor**  
+Formulario con validación para registrar un nuevo autor:  
+<img width="1366" height="638" alt="image" src="https://github.com/user-attachments/assets/201b501a-3536-4f21-bb67-fd0d31a7a4fc" />
+
+**📍 Formulario – Agregar Libro**  
+Formulario para registrar un libro:  
+<img width="1366" height="636" alt="image" src="https://github.com/user-attachments/assets/8f981b45-4c3a-43ce-a1c4-5eb03bd1fcbe" />
+
+Selección de autor desde un dropdown:  
+<img width="1237" height="284" alt="image" src="https://github.com/user-attachments/assets/f0818070-c6ab-4152-bf85-e2017ab3ce91" />
+
+
+ ## - Diagrama Entidad-Relación (ER):  
+<img width="591" height="230" alt="image" src="https://github.com/user-attachments/assets/9ce7edee-2342-4621-a089-c2896938b1b3" />
 
 - Un Autor puede tener muchos Libros
 - Un Libro pertenece a un solo Autor
 
-🖼️ Capturas de Pantalla
-📍 Página Principal – Listado de Libros
-
-Se muestra la lista de libros registrados junto con su autor.
-
-Accesos directos para agregar libros y autores.
-
-📍 Formulario – Agregar Autor
-
-Formulario con validación para registrar un nuevo autor.
-
-📍 Formulario – Agregar Libro
-
-Formulario para registrar un libro.
-
-Selección de autor desde un dropdown.
-
-📌 Nota: Las capturas deben agregarse en la carpeta /screenshots del repositorio.
-
-📎 Autor
-
-Desarrollado por Daniel Alberto Vega Bejarano
+**📎 Autor**  
+Desarrollado por Daniel Alberto Vega Bejarano  
 Prueba técnica – Desarrollador Junior .NET
