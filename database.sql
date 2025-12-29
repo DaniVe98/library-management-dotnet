@@ -1,0 +1,12 @@
+CREATE TABLE Authors (
+    AuthorId INT IDENTITY PRIMARY KEY,
+    Name NVARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Books (
+    Id INT IDENTITY PRIMARY KEY,
+    Title NVARCHAR(200) NOT NULL,
+    AuthorId INT NOT NULL,
+    CONSTRAINT FK_Books_Authors FOREIGN KEY (AuthorId)
+        REFERENCES Authors(AuthorId)
+);
