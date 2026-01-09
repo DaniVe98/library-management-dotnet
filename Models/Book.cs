@@ -15,6 +15,10 @@ namespace LibraryManagement.Models
       public int AuthorId { get; set; }
 
       public Author? Author { get; set; }
+
+      [Required]
+      [Range(0, int.MaxValue)]
+      public int Stock { get; set; }
   }
 
 }

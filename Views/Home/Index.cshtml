@@ -19,6 +19,7 @@
         <tr>
             <th class="border px-4 py-2 text-left">Título</th>
             <th class="border px-4 py-2 text-left">Autor</th>
+            <th class="border px-4 py-2 text-left">Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +28,20 @@
             <tr class="hover:bg-gray-50">
                 <td class="border px-4 py-2">@book.Title</td>
                 <td class="border px-4 py-2">@book.Author.Name</td>
+                <td class="border px-4 py-2">
+                    @if (book.Stock > 0)
+                    {
+                        <a asp-controller="Loans"
+                           asp-action="Create"
+                           asp-route-bookId="@book.Id">
+                           <span class="text-blue-600 underline">Prestar</span>
+                        </a>
+                    }
+                    else
+                    {
+                        <span class="text-red-500">Sin stock</span>
+                    }
+                </td>
             </tr>
         }
     </tbody>
