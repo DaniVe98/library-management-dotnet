@@ -25,6 +25,8 @@ Este proyecto fue desarrollado como parte de una prueba técnica para la posici�
 - 📖 Listado de libros registrados
 - ✍️ Registro de nuevos autores
 - ➕ Registro de nuevos libros asociados a un autor
+- ➕ Gestión de Stock
+- ➕ Módulo de Préstamos
 - ✅ Validaciones básicas en formularios (Frontend y Backend)
     * La validación del formulario del lado del cliente se maneja a través de la vista compartida _ValidationScriptsPartial.
 
@@ -40,10 +42,12 @@ LibraryManagement
 │ ├── HomeController.cs  
 │ ├── BooksController.cs  
 │ └── AuthorsController.cs  
+│ └── LoansController.cs  
 │  
 ├── Models  
 │ ├── Book.cs  
 │ └── Author.cs  
+│ └── Loan.cs  
 │  
 ├── Data  
 │ └── LibraryContext.cs  
@@ -52,6 +56,7 @@ LibraryManagement
 │ ├── Home  
 │ ├── Books  
 │ └── Authors  
+│ └── Loans  
 │  
 ├── wwwroot  
 │ └── css  
@@ -119,7 +124,7 @@ https://localhost:xxxx
 
 **📍 Página Principal – Listado de Libros**  
 Se muestra la lista de libros registrados junto con su autor:  
-<img width="1366" height="636" alt="image" src="https://github.com/user-attachments/assets/70bc0f46-590f-4146-bc75-09eaf3576c0e" />
+<img width="1366" height="638" alt="image" src="https://github.com/user-attachments/assets/c916179c-e537-4f08-863f-93bdaeab8acf" />
 
 Accesos directos para agregar libros y autores:  
 <img width="349" height="71" alt="image" src="https://github.com/user-attachments/assets/55505b47-0261-4337-b3bb-2915f8efe3a3" />
@@ -130,10 +135,15 @@ Formulario con validación para registrar un nuevo autor:
 
 **📍 Formulario – Agregar Libro**  
 Formulario para registrar un libro:  
-<img width="1366" height="636" alt="image" src="https://github.com/user-attachments/assets/8f981b45-4c3a-43ce-a1c4-5eb03bd1fcbe" />
+<img width="1294" height="492" alt="image" src="https://github.com/user-attachments/assets/b1f6b1e5-e7a1-479c-a145-5fc93c50e866" />
 
 Selección de autor desde un dropdown:  
 <img width="1237" height="284" alt="image" src="https://github.com/user-attachments/assets/f0818070-c6ab-4152-bf85-e2017ab3ce91" />
+
+**📍 Formulario – Prestar Libro**  
+Formulario para prestar un libro: 
+ * Campos requeridos, en donde no es posible seleccionar una fecha de devolución anterior a la fecha actual.
+<img width="1294" height="385" alt="image" src="https://github.com/user-attachments/assets/82920dd6-d3a4-46ef-ba58-acb143fc9a4b" />
 
 
  ## - Diagrama Entidad-Relación (ER):  
